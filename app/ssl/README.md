@@ -2,7 +2,7 @@
 
 ![mirotalk-https](https.png)
 
-1. Generate a `self-signed certificate`
+1. Generate a [self-signed certificate](https://en.wikipedia.org/wiki/Self-signed_certificate)
 
 ```bash
 # install openssl 4 ubuntu
@@ -19,22 +19,8 @@ rm csr.pem
 # https://www.sslchecker.com/certdecoder
 ```
 
-2. Expose `server.js` on `https`
+2. Expose `server.js` on `https` using the self-signed certificate, edit the `.env` file
 
-```js
-const isHttps = true;
-```
-
-3. Change on `client.js`
-
-```js
-const isHttps = true;
-
-function getSignalingServer() {
-    if (isHttps) {
-        return 'https://' + 'localhost' + ':' + signalingServerPort;
-        // outside of localhost change it with YOUR-SERVER-DOMAIN
-    }
-    ...
-}
+```bash
+HTTPS=true
 ```
